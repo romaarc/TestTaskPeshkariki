@@ -9,10 +9,10 @@
 import UIKit
 
 final class PhotosViewController: BaseViewController {
-	private let output: PhotosViewOutput
+    private let output: PhotosViewOutput
     private let searchController = UISearchController(searchResultsController: nil)
     private var viewModels: [PhotoViewModel] = []
-
+    
     init(output: PhotosViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
@@ -22,12 +22,12 @@ final class PhotosViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         super.setupUI()
         output.viewDidLoad()
         setupSearchController()
-	}
+    }
     
     override func setupCollectionView() {
         collectionView.delegate = self

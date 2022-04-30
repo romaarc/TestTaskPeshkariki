@@ -15,7 +15,7 @@ final class PhotoDetailContainer {
 
 	static func assemble(with context: PhotoDetailContext, withModel viewModel: PhotoViewModel) -> PhotoDetailContainer {
         let router = PhotoDetailRouter()
-        let interactor = PhotoDetailInteractor()
+        let interactor = PhotoDetailInteractor(persistentProvider: context.moduleDependencies.persistentProvider)
         let presenter = PhotoDetailPresenter(router: router, interactor: interactor)
         let viewController = PhotoDetailViewController(output: presenter, viewModel: viewModel)
 

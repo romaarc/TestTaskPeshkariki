@@ -25,6 +25,10 @@ extension PhotoDetailPresenter: PhotoDetailModuleInput {
 }
 
 extension PhotoDetailPresenter: PhotoDetailViewOutput {
+    func onSaveButtonTap(with viewModel: PhotoViewModel) {
+        interactor.save(with: viewModel)
+    }
+    
 }
 
 extension PhotoDetailPresenter: PhotoDetailInteractorOutput {

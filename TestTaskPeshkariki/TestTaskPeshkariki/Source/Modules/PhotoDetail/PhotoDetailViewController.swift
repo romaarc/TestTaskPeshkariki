@@ -16,7 +16,7 @@ final class PhotoDetailViewController: UIViewController {
     private lazy var tableView = UITableView(frame: .zero, style: .grouped)
     private lazy var photoDetailsHeaderView = PhotoDetailsHeaderView()
     
-    private let signInButton: UIButton = {
+    private let saveButton: UIButton = {
         let btn = RoundedButton(radius: 10, backgroundColor: Colors.purple, textColor: .white)
         btn.setTitle("Сохранить", for: .normal)
         btn.isEnabled = true
@@ -121,19 +121,23 @@ private extension PhotoDetailViewController {
             tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             tableView.topAnchor.constraint(equalTo: photoDetailsHeaderView.bottomAnchor),
-            //tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             tableView.heightAnchor.constraint(equalToConstant: 300)
         ])
         
-        contentView.addSubview(signInButton)
+        contentView.addSubview(saveButton)
         
         NSLayoutConstraint.activate([
-            signInButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            signInButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            signInButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 7),
-            signInButton.heightAnchor.constraint(equalToConstant: 47)
+            saveButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            saveButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            saveButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 7),
+            saveButton.heightAnchor.constraint(equalToConstant: 47)
         ])
-            //addTargetSignInButton()
+        saveButton.addTarget(self, action: #selector(save), for: .touchUpInside)
+    }
+    
+    @objc private func save() {
+        output.onSaveButtonTap(with: viewModel)
+        present(UIAlertController.display(msg: viewModel.id), animated: true, completion: nil)
     }
 }
 

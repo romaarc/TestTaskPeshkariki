@@ -12,20 +12,18 @@ protocol PhotoDetailModuleInput {
 	var moduleOutput: PhotoDetailModuleOutput? { get }
 }
 
-protocol PhotoDetailModuleOutput: AnyObject {
-}
+protocol PhotoDetailModuleOutput: AnyObject {}
 
-protocol PhotoDetailViewInput: AnyObject {
-}
+protocol PhotoDetailViewInput: AnyObject {}
 
 protocol PhotoDetailViewOutput: AnyObject {
+    func onSaveButtonTap(with viewModel: PhotoViewModel)
 }
 
 protocol PhotoDetailInteractorInput: AnyObject {
+    func save(with viewModel: PhotoViewModel)
 }
 
-protocol PhotoDetailInteractorOutput: AnyObject {
-}
+protocol PhotoDetailInteractorOutput: AnyObject {}
 
-protocol PhotoDetailRouterInput: AnyObject {
-}
+protocol PhotoDetailRouterInput: AnyObject {}

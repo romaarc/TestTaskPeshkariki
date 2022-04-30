@@ -140,16 +140,16 @@ fileprivate enum NavigationControllersType: Int, CaseIterable {
         case .photos:
             return Localize.photos
         case .locations:
-            return Localize.locations
+            return Localize.favorites
         }
     }
     
     var image: UIImage {
         switch self {
         case .photos:
-            return Localize.Images.charactersIcon
+            return Localize.Images.photoIcon
         case .locations:
-            return Localize.Images.locationIcon
+            return Localize.Images.heartIcon
         }
     }
 }

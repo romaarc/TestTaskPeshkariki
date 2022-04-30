@@ -15,7 +15,7 @@ final class PhotosContainer {
 
 	static func assemble(with context: PhotosContext) -> PhotosContainer {
         let router = PhotosRouter()
-        let interactor = PhotosInteractor(unsplashNetworkService: context.moduleDependencies.UnsplashNetworkService)
+        let interactor = PhotosInteractor(unsplashNetworkService: context.moduleDependencies.unsplashNetworkService)
         let presenter = PhotosPresenter(router: router, interactor: interactor)
 		let viewController = PhotosViewController(output: presenter)
 

@@ -8,33 +8,33 @@
 import Foundation
 
 protocol HasDependencies {
-    var UnsplashNetworkService: NetworkServiceProtocol { get }
-    //var persistentProvider: PersistentProviderProtocol { get }
+    var unsplashNetworkService: NetworkServiceProtocol { get }
+    var persistentProvider: PersistentProviderProtocol { get }
 }
 
 class AppDependency {
     let networkService: NetworkService
-    //let persistent: PersistentProvider
+    let persistent: PersistentProvider
 
-    init(networkService: NetworkService) {
+    init(networkService: NetworkService,
+         persistent: PersistentProvider) {
         self.networkService = networkService
-        //self.persistent = persistent
+        self.persistent = persistent
     }
 
     static func makeDefault() -> AppDependency {
         let networkService = NetworkService(customDecoder: JSONDecoderCustom())
-        //let persistent = PersistentProvider()
-        //return AppDependency(networkService: networkService, persistent: persistent)
-        return AppDependency(networkService: networkService)
+        let persistent = PersistentProvider()
+        return AppDependency(networkService: networkService, persistent: persistent)
     }
 }
 
 extension AppDependency: HasDependencies {
-//    var persistentProvider: PersistentProviderProtocol {
-//        return self.persistent
-//    }
+    var persistentProvider: PersistentProviderProtocol {
+        return self.persistent
+    }
     
-    var UnsplashNetworkService: NetworkServiceProtocol {
+    var unsplashNetworkService: NetworkServiceProtocol {
         return self.networkService
     }
 }

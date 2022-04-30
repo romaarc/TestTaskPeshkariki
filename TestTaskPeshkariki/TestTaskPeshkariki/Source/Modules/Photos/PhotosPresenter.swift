@@ -62,7 +62,7 @@ extension PhotosPresenter: PhotosViewOutput {
         photos.removeAll()
         isReloading = false
         isNextPageLoading = false
-        interactor.reload(withParams: PhotoURLParameters(page: String(GlobalConstants.initialPage)))
+        interactor.reload()
     }
 }
 

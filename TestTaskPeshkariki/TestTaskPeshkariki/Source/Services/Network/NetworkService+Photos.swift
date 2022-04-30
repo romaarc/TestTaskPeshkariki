@@ -17,4 +17,9 @@ extension NetworkService: NetworkServiceProtocol {
         let request = URLFactory.getPhoto(params: params)
         self.baseRequest(request: request, completion: completion)
     }
+    
+    func fetchSearchPhotos(with params: PhotoURLParameters, and completion: @escaping (Result<Response<Photo>, Error>) -> Void) {
+        let request = URLFactory.getPhotos(params: params)
+        self.baseRequest(request: request, completion: completion)
+    }
 }

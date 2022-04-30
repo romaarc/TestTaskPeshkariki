@@ -10,5 +10,4 @@ import UIKit
 
 final class PhotoDetailRouter: BaseRouter {}
 
-extension PhotoDetailRouter: PhotoDetailRouterInput {
-}
+extension PhotoDetailRouter: PhotoDetailRouterInput {}

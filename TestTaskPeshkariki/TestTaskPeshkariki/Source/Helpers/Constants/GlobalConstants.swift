@@ -52,14 +52,14 @@ struct PhotosConstants {
     }
     
     struct Strings {
-        static let emptyMessageDidError = "Не найдено фотографий или подключитесь к сети, чтобы загрузить данные"
+        static let emptyMessageDidError = "Не найдено фотографий или подключитесь к сети, чтобы загрузить данные или закончился лимит на 50 запросов к API"
         static let emptyMessage = "Не найдено фотографий"
         static let searchBarPlaceholder = "Найти фотографии"
         static let UISearchBarTitle = "Отменить"
     }
 }
 
-struct LocationConstants {
+struct FavoriteConstants {
     struct Layout {
         static let heightCardDescription: CGFloat = 80
         static let itemsInRow: CGFloat = 2
@@ -84,58 +84,6 @@ struct LocationConstants {
     }
     
     struct Strings {
-        static let emptyMessage = "Не найдено локаций или подключитесь к сети, чтобы загрузить данные"
-    }
-}
-
-struct LocationDetailConstants {
-    struct Layout {
-        static let heightCardDescription: CGFloat = 79
-        static let itemsInRow: CGFloat = 2
-        
-        static let spacing: CGFloat = 16
-        static let spacingLeft: CGFloat = 16
-        static let spacingTop: CGFloat = 10
-        static let spacingBottom: CGFloat = 20
-        static let spacingRight: CGFloat = 16
-        static let minimumInteritemSpacingForSectionAt: CGFloat = 17
-        
-        static let cornerRadius: CGFloat = 8
-        
-        static let shadowRadius: CGFloat = 6
-        static let shadowOpacity: Float = 0.4
-        static let shadowOffsetWidth: CGFloat = 0
-        static let shadowOffsetHeight: CGFloat = 5
-    }
-    
-    struct Strings {
-        static var headerInfo = "Резиденты"
-        static let emptyMessage = "Не найдено резидентов"
-    }
-}
-
-struct EpisodeConstants {
-    struct Layout {
-        static let heightCardDescription: CGFloat = 80
-        static let itemsInRow: CGFloat = 2
-        
-        static let spacing: CGFloat = 16
-        static let spacingLeft: CGFloat = 16
-        static let spacingTop: CGFloat = 19
-        static let spacingBottom: CGFloat = 20
-        static let spacingRight: CGFloat = 16
-        static let minimumInteritemSpacingForSectionAt: CGFloat = 17
-        
-        static let cornerRadius: CGFloat = 8
-        
-        static let shadowRadius: CGFloat = 6
-        static let shadowOpacity: Float = 0.4
-        static let shadowOffsetWidth: CGFloat = 0
-        static let shadowOffsetHeight: CGFloat = 5
-    }
-    
-    struct Strings {
-        static var seasonTitle = "Сезон"
-        static let emptyMessage = "Не найдено эпизодов или подключитесь к сети, чтобы загрузить данные"
+        static let emptyMessage = "Не найдено"
     }
 }
