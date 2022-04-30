@@ -6,12 +6,16 @@
 //
 
 import UIKit.UIImageView
-import SDWebImage
 import Kingfisher
 
 extension UIImageView {
     func setImage(with url: URL?) {
-        self.sd_setImage(with: url)
+        self.kf.indicatorType = .activity
+        self.kf.setImage(with: url)
+    }
+    
+    func setImageOffline(with url: URL?) {
+        self.kf.indicatorType = .activity
+        self.kf.setImage(with: url, options: [.onlyFromCache])
     }
 }
-

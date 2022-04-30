@@ -8,8 +8,13 @@
 import Foundation
 
 extension NetworkService: NetworkServiceProtocol {
-    func fetchPhotos(with params: URLParameters, and completion: @escaping (Result<[Photo], Error>) -> Void) {
+    func fetchPhotos(with params: PhotoURLParameters, and completion: @escaping (Result<[Photo], Error>) -> Void) {
         let request = URLFactory.getPhotos(params: params)
+        self.baseRequest(request: request, completion: completion)
+    }
+    
+    func fetchPhoto(with params: PhotoDetailURLParameters, and completion: @escaping (Result<PhotoDetail, Error>) -> Void) {
+        let request = URLFactory.getPhoto(params: params)
         self.baseRequest(request: request, completion: completion)
     }
 }

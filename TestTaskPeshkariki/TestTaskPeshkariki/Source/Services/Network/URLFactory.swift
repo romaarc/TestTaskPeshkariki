@@ -18,15 +18,32 @@ enum URLFactory {
         return urlComponents
     }()
     
-    static func getPhotos(params: URLParameters) -> URLRequest {
+    static func getPhotos(params: PhotoURLParameters) -> URLRequest {
         var urlComponents = baseURLComponents
         let paramsQueryItem = [
             URLQueryItem(name: "page", value: params.page ?? ""),
-            URLQueryItem(name: "per_page", value: "5")
+            URLQueryItem(name: "per_page", value: "2")
         ]
+        if !params.query.isEmpty {
+            let paramsQueryItem = [
+                URLQueryItem(name: "query", value: params.query)
+            ]
+            urlComponents.queryItems?.append(contentsOf: paramsQueryItem)
+        }
         urlComponents.queryItems?.append(contentsOf: paramsQueryItem)
     
-        var request = URLRequest(url: urlComponents.url!.appendingPathComponent(API.TypeOf.photos))
+        var request = URLRequest(url: urlComponents.url!.appendingPathComponent(!params.query.isEmpty ? API.TypeOf.searchPhotos : API.TypeOf.photos))
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.timeoutInterval = 30
+        for header in HTTPHeader.default {
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
+        return request
+    }
+    
+    static func getPhoto(params: PhotoDetailURLParameters) -> URLRequest {
+        let url = URL(string: API.main + API.TypeOf.photos + "/" + params.id)!
+        var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get.rawValue
         request.timeoutInterval = 30
         for header in HTTPHeader.default {

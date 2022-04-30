@@ -21,12 +21,19 @@ protocol PhotosViewInput: ViewInput {
 protocol PhotosViewOutput: AnyObject {
     func viewDidLoad()
     func willDisplay(at index: Int)
+    func onCellTap(with viewModel: PhotoViewModel)
+    func searchBarTextDidEndEditing(with searchText: String)
+    func searchBarCancelButtonClicked()
 }
 
-protocol PhotosInteractorInput: InteractorInput {}
+protocol PhotosInteractorInput: InteractorInput {
+    func reload(withParams params: PhotoURLParameters)
+}
 
 protocol PhotosInteractorOutput: InteractorOutput {
-    func didLoad(with photos: [Photo], loadType: LoadingDataType, count: Int)
+    func didLoad(with photos: [Photo], and detail: [String: PhotoDetail], loadType: LoadingDataType, count: Int)
 }
 
-protocol PhotosRouterInput: AnyObject {}
+protocol PhotosRouterInput: AnyObject {
+    func showDetail(with viewModel: PhotoViewModel)
+}

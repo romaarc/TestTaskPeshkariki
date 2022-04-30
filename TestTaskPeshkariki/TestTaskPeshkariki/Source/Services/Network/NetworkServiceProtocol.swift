@@ -8,5 +8,6 @@
 import Foundation
 
 protocol NetworkServiceProtocol {
-    func fetchPhotos(with params: URLParameters, and completion: @escaping (Result<[Photo], Error>) -> Void)
+    func fetchPhotos(with params: PhotoURLParameters, and completion: @escaping (Result<[Photo], Error>) -> Void)
+    func fetchPhoto(with params: PhotoDetailURLParameters, and completion: @escaping (Result<PhotoDetail, Error>) -> Void)
 }

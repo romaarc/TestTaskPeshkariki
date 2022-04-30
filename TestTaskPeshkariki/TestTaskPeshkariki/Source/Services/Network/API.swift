@@ -14,7 +14,6 @@ enum API {
     
     enum TypeOf {
         static let photos = "/photos"
+        static let searchPhotos = "/search/photos"
     }
 }
-// Access Key Client-ID 0zPmX8PqONcsMaC3Xsqa_hNyKtTaZcAc_aCl7-9o1SY
-// Secret JfiVTHdG7zqfghZ1LKseC2dre78ZVv3S5RLHIkd3oZ0

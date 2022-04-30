@@ -70,42 +70,42 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let generator = UISelectionFeedbackGenerator()
-        //let viewModel = viewModels[indexPath.row]
+        let viewModel = viewModels[indexPath.row]
         generator.selectionChanged()
-        //output.onCellTap(with: viewModel)
+        output.onCellTap(with: viewModel)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        //output.willDisplay(at: indexPath.item)
+        output.willDisplay(at: indexPath.item)
     }
 }
 
 extension PhotosViewController: PhotosViewInput {
     func didError() {
-//        DispatchQueue.main.async {
-//            if self.viewModels.isEmpty {
-//                self.collectionView.performBatchUpdates {
-//                    var indexPaths: [IndexPath] = []
-//                    for s in 0..<self.collectionView.numberOfSections {
-//                        for i in 0..<self.collectionView.numberOfItems(inSection: s) {
-//                            indexPaths.append(IndexPath(row: i, section: s))
-//                        }
-//                    }
-//                    self.collectionView.deleteItems(at: indexPaths)
-//                } completion: {_ in
-//                    self.collectionView.setEmptyMessage(message: PhotosConstants.Strings.emptyMessageDidError)
-//                }
-//            }
-//        }
+        DispatchQueue.main.async {
+            if self.viewModels.isEmpty {
+                self.collectionView.performBatchUpdates {
+                    var indexPaths: [IndexPath] = []
+                    for s in 0..<self.collectionView.numberOfSections {
+                        for i in 0..<self.collectionView.numberOfItems(inSection: s) {
+                            indexPaths.append(IndexPath(row: i, section: s))
+                        }
+                    }
+                    self.collectionView.deleteItems(at: indexPaths)
+                } completion: {_ in
+                    self.collectionView.setEmptyMessage(message: PhotosConstants.Strings.emptyMessageDidError)
+                }
+            }
+        }
     }
     
     func set(viewModels: [PhotoViewModel]) {
         self.viewModels = viewModels
         DispatchQueue.main.async {
             if self.viewModels.isEmpty {
-                //self.collectionView.setEmptyMessage(message: PhotosConstants.Strings.emptyMessage)
+                self.collectionView.setEmptyMessage(message: PhotosConstants.Strings.emptyMessage)
             } else {
-                //self.collectionView.restore()
+                self.collectionView.restore()
                 self.collectionView.reloadData()
             }
         }
@@ -135,17 +135,12 @@ extension PhotosViewController: UISearchBarDelegate, UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else { return }
         if !text.isEmpty {
             viewModels.removeAll()
-            //output.searchBarTextDidEndEditing(with: text, and: filter)
+            output.searchBarTextDidEndEditing(with: text)
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        if let _ = filter.statusIndexPath, let _ = filter.genderIndexPath {
-//            viewModels.removeAll()
-//            //output.searchBarTextDidEndEditing(with: "", and: filter)
-//        } else {
-//            viewModels.removeAll()
-//            //output.searchBarCancelButtonClicked()
-//        }
+        viewModels.removeAll()
+        output.searchBarCancelButtonClicked()
     }
 }

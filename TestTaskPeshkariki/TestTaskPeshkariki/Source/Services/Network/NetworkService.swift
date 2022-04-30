@@ -15,6 +15,12 @@ enum NetworkErrors: Error {
 
 final class NetworkService {
     
+    private let customDecoder: CustomDecoder
+    
+    init(customDecoder: CustomDecoder) {
+        self.customDecoder = customDecoder
+    }
+    
     func baseRequest<T: Decodable>(request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         
         guard let _ = request.url else {
@@ -35,14 +41,13 @@ final class NetworkService {
                 return
             }
             
-            let decoder = JSONDecoder()
+            let decoder = self.customDecoder.decoder
             do {
                 let decodedModel = try decoder.decode(T.self, from: data)
                 completion(.success(decodedModel))
             } catch {
                 completion(.failure(NetworkErrors.decodeIsFail))
             }
-            
         }.resume()
     }
 }

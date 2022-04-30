@@ -21,6 +21,8 @@ class AppCoordinator {
     }
     
     func start() {
+        UIImageView().setupCache()
+        
         if #available(iOS 13.0, *) {
             window.overrideUserInterfaceStyle = .light
         }

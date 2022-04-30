@@ -22,7 +22,7 @@ class AppDependency {
     }
 
     static func makeDefault() -> AppDependency {
-        let networkService = NetworkService()
+        let networkService = NetworkService(customDecoder: JSONDecoderCustom())
         //let persistent = PersistentProvider()
         //return AppDependency(networkService: networkService, persistent: persistent)
         return AppDependency(networkService: networkService)
@@ -37,7 +37,4 @@ extension AppDependency: HasDependencies {
     var UnsplashNetworkService: NetworkServiceProtocol {
         return self.networkService
     }
-//    var reachabilityService: ReachabilityProtocol {
-//        return self.reachability
-//    }
 }

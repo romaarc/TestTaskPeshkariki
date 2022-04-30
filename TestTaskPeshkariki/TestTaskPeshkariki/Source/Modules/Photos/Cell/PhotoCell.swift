@@ -7,18 +7,24 @@
 
 import UIKit
 
-class PhotoCell: BaseUICollectionViewCell {
+class PhotoCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
-        let image = UIImageView(frame: .zero)
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFill
-        return image
+        let imageView = UIImageView(frame: .zero)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
-    override func setupView() {
-        [imageView].forEach { contentView.addSubview($0) }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(imageView)
         setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 //MARK: - UI
