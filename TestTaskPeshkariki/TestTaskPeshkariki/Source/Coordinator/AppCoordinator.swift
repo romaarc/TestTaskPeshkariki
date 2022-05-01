@@ -28,8 +28,7 @@ class AppCoordinator {
         }
         
         setupPhotos()
-        //setupLocation()
-        //setupEpisode()
+        setupSaved()
         
         let navigationControllers = NavigationControllersType.allCases.compactMap {
             self.navigationControllers[$0]
@@ -69,17 +68,17 @@ private extension AppCoordinator {
         setupAppearanceNavigationBar(with: navController)
     }
     
-//    func setupLocation() {
-//        guard let navController = self.navigationControllers[.locations] else {
-//            fatalError("something wrong with appCoordinator")
-//        }
-//        let context = LocationContext(moduleDependencies: appDependency, moduleOutput: nil)
-//        let container = LocationContainer.assemble(with: context)
-//        let locationVC = container.viewController
-//        locationVC.navigationItem.title = Localize.locations
-//        navController.setViewControllers([locationVC], animated: false)
-//        setupAppearanceNavigationBar(with: navController)
-//    }
+    func setupSaved() {
+        guard let navController = self.navigationControllers[.saved] else {
+            fatalError("something wrong with appCoordinator")
+        }
+        let context = PhotoFavoriteContext(moduleDependencies: appDependency, moduleOutput: nil)
+        let container = PhotoFavoriteContainer.assemble(with: context)
+        let photoFavoriteVC = container.viewController
+        photoFavoriteVC.navigationItem.title = Localize.favorites
+        navController.setViewControllers([photoFavoriteVC], animated: false)
+        setupAppearanceNavigationBar(with: navController)
+    }
     
     func setupAppearanceTabBar(with controller: UITabBarController) {
         let tabBarAppearance = UITabBarAppearance()
@@ -134,12 +133,12 @@ private extension AppCoordinator {
 }
 
 fileprivate enum NavigationControllersType: Int, CaseIterable {
-    case photos, locations
+    case photos, saved
     var title: String {
         switch self {
         case .photos:
             return Localize.photos
-        case .locations:
+        case .saved:
             return Localize.favorites
         }
     }
@@ -148,7 +147,7 @@ fileprivate enum NavigationControllersType: Int, CaseIterable {
         switch self {
         case .photos:
             return Localize.Images.photoIcon
-        case .locations:
+        case .saved:
             return Localize.Images.heartIcon
         }
     }

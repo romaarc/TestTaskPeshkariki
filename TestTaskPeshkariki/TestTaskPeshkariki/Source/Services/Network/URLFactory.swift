@@ -23,14 +23,14 @@ enum URLFactory {
         if !params.query.isEmpty {
             let paramsQueryItem = [
                 URLQueryItem(name: "query", value: params.query),
-                URLQueryItem(name: "per_page", value: "2"),
+                URLQueryItem(name: "per_page", value: "10"),
                 URLQueryItem(name: "page", value: params.page ?? "")
             ]
             urlComponents.queryItems?.append(contentsOf: paramsQueryItem)
         } else {
             let paramsQueryItem = [
                 URLQueryItem(name: "page", value: params.page ?? ""),
-                URLQueryItem(name: "per_page", value: "2")
+                URLQueryItem(name: "per_page", value: "10")
             ]
             urlComponents.queryItems?.append(contentsOf: paramsQueryItem)
         }

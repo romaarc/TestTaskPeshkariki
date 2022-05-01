@@ -29,17 +29,14 @@ extension PersistentProvider: PersistentProviderProtocol {
             break
         case .remove:
             backgroundViewContext.performAndWait {
-                let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: PersistentConstants.cdModel)
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-
-                do {
-                    try backgroundViewContext.execute(deleteRequest)
-                    completion(.success(.remove))
-                } catch let error as NSError {
-                    completion(.failure(error))
+                models.forEach {
+                    ///updating
+                    if let photos = try? self.fetchRequest(for: $0).execute().first {
+                        photos.update(with: $0, isFav: false)
+                    }
                 }
+                saveContext()
             }
-            saveContext()
         }
     }
 
@@ -48,12 +45,14 @@ extension PersistentProvider: PersistentProviderProtocol {
         request.returnsObjectsAsFaults = false
         let sort = NSSortDescriptor(key: "id", ascending: true)
         request.sortDescriptors = [sort]
+        request.returnsObjectsAsFaults = false
+        request.predicate = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
         let table = try? mainViewContext.fetch(request)
         guard let table = table else { return [PCDModel]() }
         return table
     }
 
-    func requestModels(withId id: String) -> [PCDModel]{
+    func requestModels(withId id: String) -> [PCDModel] {
         let request = PCDModel.fetchRequest()
         let sort = NSSortDescriptor(key: "id", ascending: true)
         request.sortDescriptors = [sort]
@@ -75,11 +74,15 @@ private extension PersistentProvider {
 }
 
 fileprivate extension PCDModel {
-    func update(with photo: PhotoViewModel) {
+    func update(with photo: PhotoViewModel, isFav: Bool = true) {
         url = photo.urls.regular
         autorName = photo.user.name
-        isFavorite = true
+        isFavorite = isFav
         currentDate = Date()
+        city = photo.location.city ?? ""
+        country = photo.location.country ?? ""
+        downloads = Int64(photo.downloads)
+        createdAt = photo.createdAt
     }
 
     func configNew(with photo: PhotoViewModel) {

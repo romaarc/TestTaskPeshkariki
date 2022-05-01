@@ -20,4 +20,11 @@ extension PhotosRouter: PhotosRouterInput {
     
 }
 
-extension PhotosRouter: PhotoDetailModuleOutput {}
+extension PhotosRouter: PhotoDetailModuleOutput {
+    func back() {
+        guard let viewController = viewController else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.navigationController?.popToViewController(viewController, animated: true)
+        }
+    }
+}

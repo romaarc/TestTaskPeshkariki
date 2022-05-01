@@ -9,5 +9,5 @@ import Foundation
 
 enum PersistentConstants {
     static let target = "TestTaskPeshkariki"
-    static let cdModel = "CDModel"
+    static let cdModel = "PCDModel"
 }

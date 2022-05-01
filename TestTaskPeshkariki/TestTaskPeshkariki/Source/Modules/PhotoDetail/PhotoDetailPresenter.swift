@@ -21,15 +21,28 @@ final class PhotoDetailPresenter {
     }
 }
 
-extension PhotoDetailPresenter: PhotoDetailModuleInput {
-}
+extension PhotoDetailPresenter: PhotoDetailModuleInput {}
 
 extension PhotoDetailPresenter: PhotoDetailViewOutput {
-    func onSaveButtonTap(with viewModel: PhotoViewModel) {
-        interactor.save(with: viewModel)
+    func remove(with viewModel: PhotoViewModel) {
+        interactor.update(with: viewModel, and: .remove)
     }
     
+    func viewDidLoad(withId id: String) {
+        interactor.get(withId: id)
+    }
+    
+    func onSaveButtonTap(with viewModel: PhotoViewModel) {
+        interactor.update(with: viewModel, and: .add)
+    }
+    
+    func back() {
+        moduleOutput?.back()
+    }
 }
 
 extension PhotoDetailPresenter: PhotoDetailInteractorOutput {
+    func didLoadFromCD(isSaved: Bool) {
+        view?.setSaveButton(isSaved: isSaved)
+    }
 }

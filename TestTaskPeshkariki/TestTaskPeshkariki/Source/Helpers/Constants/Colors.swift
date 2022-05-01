@@ -17,7 +17,7 @@ enum Colors {
     static let rowFilterColor = UIColor.rgba(199, 199, 204)
     
     enum Gradient {
-        static let midColor = UIColor.rgba(216, 245, 240)
-        static let topColor = UIColor.rgba(211, 236, 242)
+        static let midColor = UIColor.rgba(248, 248, 248, 0.92)
+        static let topColor = UIColor.rgba(255, 255, 247)
     }
 }

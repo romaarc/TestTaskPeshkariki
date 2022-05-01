@@ -12,20 +12,25 @@ protocol PhotoFavoriteModuleInput {
 	var moduleOutput: PhotoFavoriteModuleOutput? { get }
 }
 
-protocol PhotoFavoriteModuleOutput: class {
+protocol PhotoFavoriteModuleOutput: AnyObject {}
+
+protocol PhotoFavoriteViewInput: ViewInput {
+    func set(viewModels: [PCDModel])
 }
 
-protocol PhotoFavoriteViewInput: class {
+protocol PhotoFavoriteViewOutput: AnyObject {
+    func viewDidLoad()
+    func onCellTap(with viewModel: PhotoViewModel)
 }
 
-protocol PhotoFavoriteViewOutput: class {
+protocol PhotoFavoriteInteractorInput: AnyObject {
+    func request()
 }
 
-protocol PhotoFavoriteInteractorInput: class {
+protocol PhotoFavoriteInteractorOutput: AnyObject {
+    func didLoad(with photos: [PCDModel])
 }
 
-protocol PhotoFavoriteInteractorOutput: class {
-}
-
-protocol PhotoFavoriteRouterInput: class {
+protocol PhotoFavoriteRouterInput: AnyObject {
+    func showDetail(with viewModel: PhotoViewModel)
 }

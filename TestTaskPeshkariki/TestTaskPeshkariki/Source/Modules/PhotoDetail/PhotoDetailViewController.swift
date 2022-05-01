@@ -46,6 +46,7 @@ final class PhotoDetailViewController: UIViewController {
 		super.viewDidLoad()
         setupNavBar()
         setupTableView()
+        output.viewDidLoad(withId: viewModel.id)
 	}
     
     private func setupNavBar() {
@@ -136,8 +137,26 @@ private extension PhotoDetailViewController {
     }
     
     @objc private func save() {
-        output.onSaveButtonTap(with: viewModel)
-        present(UIAlertController.display(msg: viewModel.id), animated: true, completion: nil)
+        if saveButton.titleLabel?.text == "Cохранено" {
+            let alert = UIAlertController(title: "Вы уверены?", message: "Данные будут удалены из сохраненных", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] (action: UIAlertAction!) in
+                guard let self = self else { return }
+                self.output.remove(with: self.viewModel)
+                self.saveButton.setTitle("Cохранить", for: .normal)
+                self.output.back()
+            }))
+
+            alert.addAction(UIAlertAction(title: "Нет", style: .destructive))
+
+            present(alert, animated: true, completion: nil)
+        } else {
+            output.onSaveButtonTap(with: viewModel)
+            present(UIAlertController.display(msg: ""), animated: true) { [weak self] in
+                self?.output.back()
+            }
+            saveButton.setTitle("Cохранено", for: .normal)
+        }
     }
 }
 
@@ -200,4 +219,8 @@ extension PhotoDetailViewController {
     }
 }
 
-extension PhotoDetailViewController: PhotoDetailViewInput {}
+extension PhotoDetailViewController: PhotoDetailViewInput {
+    func setSaveButton(isSaved: Bool) {
+        saveButton.setTitle(isSaved ? "Cохранено" : "Сохранить", for: .normal)
+    }
+}

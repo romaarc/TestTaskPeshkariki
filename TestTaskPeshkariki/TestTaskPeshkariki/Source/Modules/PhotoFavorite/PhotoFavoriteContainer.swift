@@ -15,7 +15,7 @@ final class PhotoFavoriteContainer {
 
 	static func assemble(with context: PhotoFavoriteContext) -> PhotoFavoriteContainer {
         let router = PhotoFavoriteRouter()
-        let interactor = PhotoFavoriteInteractor()
+        let interactor = PhotoFavoriteInteractor(persistentProvider: context.moduleDependencies.persistentProvider)
         let presenter = PhotoFavoritePresenter(router: router, interactor: interactor)
 		let viewController = PhotoFavoriteViewController(output: presenter)
 
@@ -23,6 +23,15 @@ final class PhotoFavoriteContainer {
 		presenter.moduleOutput = context.moduleOutput
 
 		interactor.output = presenter
+        
+        router.viewControllerProvider = { [weak viewController] in
+            viewController
+        }
+        router.navigationControllerProvider = { [weak viewController] in
+            viewController?.navigationController
+        }
+        
+        router.moduleDependencies = context.moduleDependencies
 
         return PhotoFavoriteContainer(view: viewController, input: presenter, router: router)
 	}
@@ -35,5 +44,6 @@ final class PhotoFavoriteContainer {
 }
 
 struct PhotoFavoriteContext {
+    let moduleDependencies: ModuleDependencies
 	weak var moduleOutput: PhotoFavoriteModuleOutput?
 }

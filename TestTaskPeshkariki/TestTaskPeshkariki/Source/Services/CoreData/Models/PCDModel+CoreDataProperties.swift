@@ -9,11 +9,10 @@
 import Foundation
 import CoreData
 
-
 extension PCDModel {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<PCDModel> {
-        return NSFetchRequest<PCDModel>(entityName: "PCDModel")
+        return NSFetchRequest<PCDModel>(entityName: PersistentConstants.cdModel)
     }
 
     @NSManaged public var id: String?
@@ -21,9 +20,11 @@ extension PCDModel {
     @NSManaged public var autorName: String?
     @NSManaged public var currentDate: Date?
     @NSManaged public var isFavorite: Bool
+    @NSManaged public var city: String?
+    @NSManaged public var country: String?
+    @NSManaged public var createdAt: String?
+    @NSManaged public var downloads: Int64
 
 }
 
-extension PCDModel : Identifiable {
-
-}
+extension PCDModel : Identifiable {}

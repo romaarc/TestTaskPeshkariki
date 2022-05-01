@@ -11,7 +11,7 @@ extension UIAlertController {
     
     static func display(msg: String) -> UIAlertController {
         let alertContoller = UIAlertController(
-            title: "Сохранено в БД",
+            title: "Произошло сохранение..",
             message: msg,
             preferredStyle: .alert
         )

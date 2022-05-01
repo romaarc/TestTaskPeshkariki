@@ -8,7 +8,6 @@
 import Foundation
 
 protocol PersistentProviderProtocol {
-//    //MARK: - Photos
     func update(where models: [PhotoViewModel], to action: PersistentState, and completion: @escaping (Result<PersistentState, Error>) -> Void)
     func requestModels() -> [PCDModel]
     func requestModels(withId id: String) -> [PCDModel]

@@ -31,6 +31,8 @@
 		BB6E3C7F281DCED2006A346F /* PhotoFavoriteProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6E3C79281DCED2006A346F /* PhotoFavoriteProtocols.swift */; };
 		BB6E3C80281DCED2006A346F /* PhotoFavoriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6E3C7A281DCED2006A346F /* PhotoFavoriteInteractor.swift */; };
 		BB6E3C81281DCED2006A346F /* PhotoFavoriteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6E3C7B281DCED2006A346F /* PhotoFavoriteContainer.swift */; };
+		BB6E3C84281DD1FC006A346F /* PhotoFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6E3C83281DD1FC006A346F /* PhotoFavoriteCell.swift */; };
+		BB6E3C87281DE0BD006A346F /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6E3C86281DE0BD006A346F /* GradientView.swift */; };
 		BB6F61AB281D1AAC00B716EA /* PhotoDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F61A5281D1AAC00B716EA /* PhotoDetailPresenter.swift */; };
 		BB6F61AC281D1AAC00B716EA /* PhotoDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F61A6281D1AAC00B716EA /* PhotoDetailRouter.swift */; };
 		BB6F61AD281D1AAC00B716EA /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F61A7281D1AAC00B716EA /* PhotoDetailViewController.swift */; };
@@ -115,6 +117,8 @@
 		BB6E3C79281DCED2006A346F /* PhotoFavoriteProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFavoriteProtocols.swift; sourceTree = "<group>"; };
 		BB6E3C7A281DCED2006A346F /* PhotoFavoriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFavoriteInteractor.swift; sourceTree = "<group>"; };
 		BB6E3C7B281DCED2006A346F /* PhotoFavoriteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFavoriteContainer.swift; sourceTree = "<group>"; };
+		BB6E3C83281DD1FC006A346F /* PhotoFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFavoriteCell.swift; sourceTree = "<group>"; };
+		BB6E3C86281DE0BD006A346F /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		BB6F61A5281D1AAC00B716EA /* PhotoDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailPresenter.swift; sourceTree = "<group>"; };
 		BB6F61A6281D1AAC00B716EA /* PhotoDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailRouter.swift; sourceTree = "<group>"; };
 		BB6F61A7281D1AAC00B716EA /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +297,22 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		BB6E3C82281DD1EA006A346F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BB6E3C83281DD1FC006A346F /* PhotoFavoriteCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		BB6E3C85281DE0AB006A346F /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				BB6E3C86281DE0BD006A346F /* GradientView.swift */,
+			);
+			path = Gradient;
+			sourceTree = "<group>";
+		};
 		BB6F61B1281D26FE00B716EA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +367,7 @@
 		BB8D28A0281C1BC400D9EF41 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				BB6E3C85281DE0AB006A346F /* Gradient */,
 				BB8D28A1281C1C1800D9EF41 /* Typealise */,
 				BB8D28A4281C1C4F00D9EF41 /* Enums */,
 				BB8D28A7281C1C7A00D9EF41 /* Protocols */,
@@ -470,6 +491,7 @@
 		BB8D28C3281C1F5F00D9EF41 /* PhotoFavorite */ = {
 			isa = PBXGroup;
 			children = (
+				BB6E3C82281DD1EA006A346F /* Cell */,
 				BB6E3C76281DCED2006A346F /* PhotoFavoritePresenter.swift */,
 				BB6E3C77281DCED2006A346F /* PhotoFavoriteRouter.swift */,
 				BB6E3C78281DCED2006A346F /* PhotoFavoriteViewController.swift */,
@@ -646,6 +668,7 @@
 				BBC3EFE4281D883400179BD7 /* PersistentConstants.swift in Sources */,
 				BB8D28CB281C1FDD00D9EF41 /* PhotosPresenter.swift in Sources */,
 				BB8D28C0281C1F0800D9EF41 /* BaseRouter.swift in Sources */,
+				BB6E3C84281DD1FC006A346F /* PhotoFavoriteCell.swift in Sources */,
 				BB8D28CD281C1FDD00D9EF41 /* PhotosViewController.swift in Sources */,
 				BB8D288E281C0D7000D9EF41 /* API.swift in Sources */,
 				BB473657281C064D00F2B299 /* AppDependency.swift in Sources */,
@@ -680,6 +703,7 @@
 				BB8D28B9281C1E7F00D9EF41 /* BaseView.swift in Sources */,
 				BB8D289D281C15C600D9EF41 /* Urls.swift in Sources */,
 				BB6F61B4281D273400B716EA /* PhotoDetailsHeaderView.swift in Sources */,
+				BB6E3C87281DE0BD006A346F /* GradientView.swift in Sources */,
 				BBC3EFE0281D87D900179BD7 /* PersistentProviderProtocol.swift in Sources */,
 				BB6E3C81281DCED2006A346F /* PhotoFavoriteContainer.swift in Sources */,
 				BB8D28D4281C207700D9EF41 /* PhotoViewModel.swift in Sources */,

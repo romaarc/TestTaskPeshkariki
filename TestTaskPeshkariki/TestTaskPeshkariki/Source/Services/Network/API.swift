@@ -17,5 +17,3 @@ enum API {
         static let searchPhotos = "/search/photos"
     }
 }
-
-//https://api.unsplash.com/search/photos/?client_id=0zPmX8PqONcsMaC3Xsqa_hNyKtTaZcAc_aCl7-9o1SY&query=sunset&per_page=10&page=1

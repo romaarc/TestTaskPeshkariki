@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoHeaderSectionView: BaseUITableViewHeaderFooterView {
+final class PhotoHeaderSectionView: BaseUITableViewHeaderFooterView {
     
     private let label: UILabel = {
         let label = UILabel()

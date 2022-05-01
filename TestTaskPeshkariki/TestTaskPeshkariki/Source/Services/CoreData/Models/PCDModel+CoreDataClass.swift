@@ -10,6 +10,4 @@ import Foundation
 import CoreData
 
 @objc(PCDModel)
-public class PCDModel: NSManagedObject {
-
-}
+public class PCDModel: NSManagedObject {}

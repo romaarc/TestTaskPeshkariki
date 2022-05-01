@@ -134,12 +134,14 @@ extension PhotosViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         if !text.isEmpty {
+            self.collectionView.restore()
             viewModels.removeAll()
             output.searchBarTextDidEndEditing(with: text)
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.collectionView.restore()
         viewModels.removeAll()
         output.searchBarCancelButtonClicked()
     }

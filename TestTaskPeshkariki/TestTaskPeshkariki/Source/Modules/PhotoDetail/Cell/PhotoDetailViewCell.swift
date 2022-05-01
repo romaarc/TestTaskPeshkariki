@@ -66,7 +66,11 @@ extension PhotoDetailViewCell {
         case 2:
             label.text = "Местоположение"
             if let city = viewModel.location.city, let country = viewModel.location.country  {
-                subLabel.text = country + ", " + city
+                if !city.isEmpty || !country.isEmpty {
+                    subLabel.text = country + ", " + city
+                } else {
+                    subLabel.text = "Нет информации"
+                }
             } else {
                 subLabel.text = "Нет информации"
             }
@@ -80,4 +84,3 @@ extension PhotoDetailViewCell {
         }
     }
 }
-

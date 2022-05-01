@@ -18,9 +18,15 @@ final class PhotoDetailInteractor {
 }
 
 extension PhotoDetailInteractor: PhotoDetailInteractorInput {
-    func save(with viewModel: PhotoViewModel) {
-        let workItem = DispatchWorkItem {
-            self.persistentProvider.update(where: [viewModel], to: .add) { _ in }
+    func get(withId id: String) {
+        let models = persistentProvider.requestModels(withId: id)
+        guard models.count > 0 else { return }
+        output?.didLoadFromCD(isSaved: models[0].isFavorite)
+    }
+    
+    func update(with viewModel: PhotoViewModel, and state: PersistentState) {
+        let workItem = DispatchWorkItem { [weak self] in
+            self?.persistentProvider.update(where: [viewModel], to: state) { _ in }
         }
         DispatchQueue.global(qos: .background).async(execute: workItem)
     }

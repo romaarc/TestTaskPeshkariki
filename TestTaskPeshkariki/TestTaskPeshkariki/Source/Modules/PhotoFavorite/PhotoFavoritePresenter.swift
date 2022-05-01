@@ -25,7 +25,20 @@ extension PhotoFavoritePresenter: PhotoFavoriteModuleInput {
 }
 
 extension PhotoFavoritePresenter: PhotoFavoriteViewOutput {
+    func viewDidLoad() {
+        view?.startActivityIndicator()
+        interactor.request()
+    }
+    
+    func onCellTap(with viewModel: PhotoViewModel) {
+        router.showDetail(with: viewModel)
+    }
 }
 
 extension PhotoFavoritePresenter: PhotoFavoriteInteractorOutput {
+    func didLoad(with photos: [PCDModel]) {
+        view?.set(viewModels: photos)
+        view?.stopActivityIndicator()
+    }
+    
 }
