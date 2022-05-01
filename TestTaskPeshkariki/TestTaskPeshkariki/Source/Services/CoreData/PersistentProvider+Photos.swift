@@ -14,11 +14,11 @@ extension PersistentProvider: PersistentProviderProtocol {
         case .add:
             backgroundViewContext.performAndWait {
                 models.forEach {
-                    ///updating
                     if let photos = try? self.fetchRequest(for: $0).execute().first {
+                        ///updating
                         photos.update(with: $0)
-                        ///adding
                     } else {
+                        ///adding
                         let cdModel = PCDModel(context: backgroundViewContext)
                         cdModel.configNew(with: $0)
                     }
@@ -30,8 +30,8 @@ extension PersistentProvider: PersistentProviderProtocol {
         case .remove:
             backgroundViewContext.performAndWait {
                 models.forEach {
-                    ///updating
                     if let photos = try? self.fetchRequest(for: $0).execute().first {
+                        ///updating
                         photos.update(with: $0, isFav: false)
                     }
                 }

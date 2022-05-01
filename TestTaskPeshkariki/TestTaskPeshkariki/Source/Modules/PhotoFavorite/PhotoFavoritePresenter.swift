@@ -21,10 +21,10 @@ final class PhotoFavoritePresenter {
     }
 }
 
-extension PhotoFavoritePresenter: PhotoFavoriteModuleInput {
-}
+extension PhotoFavoritePresenter: PhotoFavoriteModuleInput {}
 
 extension PhotoFavoritePresenter: PhotoFavoriteViewOutput {
+    
     func viewDidLoad() {
         view?.startActivityIndicator()
         interactor.request()
@@ -40,5 +40,4 @@ extension PhotoFavoritePresenter: PhotoFavoriteInteractorOutput {
         view?.set(viewModels: photos)
         view?.stopActivityIndicator()
     }
-    
 }

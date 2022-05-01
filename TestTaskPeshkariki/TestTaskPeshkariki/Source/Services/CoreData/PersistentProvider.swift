@@ -8,13 +8,13 @@
 import CoreData
 import Foundation
 
-class PersistentProvider {
+final class PersistentProvider {
     private var persistentContainer: NSPersistentContainer!
     var mainViewContext: NSManagedObjectContext!
     var backgroundViewContext: NSManagedObjectContext!
 
     init() {
-        let container = NSPersistentContainer(name: "TestTaskPeshkariki")
+        let container = NSPersistentContainer(name: PersistentConstants.target)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")

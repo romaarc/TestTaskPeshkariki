@@ -14,7 +14,7 @@ extension UIImageView {
         // Limit memory cache size to 1000 MB.
         cache.memoryStorage.config.totalCostLimit = 1000 * 1024 * 1024
 
-        // Limit memory cache to hold 10000 images at most.
+        // Limit memory cache to hold 100000 images at most.
         cache.memoryStorage.config.countLimit = 100000
 
         // Limit disk cache size to 3000 MB.

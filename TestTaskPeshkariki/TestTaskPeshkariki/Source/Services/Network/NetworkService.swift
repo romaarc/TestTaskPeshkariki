@@ -29,8 +29,6 @@ final class NetworkService {
         }
         
         URLSession.shared.dataTask(with: request) { data, response, error in
-            //print(request.url!)
-            
             if let error = error {
                 completion(.failure(error))
                 return

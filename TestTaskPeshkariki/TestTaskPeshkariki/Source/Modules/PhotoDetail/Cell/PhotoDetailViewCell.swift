@@ -21,7 +21,6 @@ final class PhotoDetailViewCell: BaseUITableViewCell {
         return label
     }()
     
-    
     private let subLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
