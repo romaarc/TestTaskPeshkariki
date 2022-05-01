@@ -41,8 +41,8 @@ extension PhotosInteractor: PhotosInteractorInput {
 
 private extension PhotosInteractor {
     func load() {
-        let maxPage = 1
-        let maxCount = 10
+        let maxPage = 5
+        let maxCount = 50
         let queue = DispatchQueue.global(qos: .userInteractive)
         let group = DispatchGroup()
         unsplashNetworkService.fetchPhotos(with: params) { [weak self] result in
