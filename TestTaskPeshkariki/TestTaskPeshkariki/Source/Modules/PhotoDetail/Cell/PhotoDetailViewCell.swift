@@ -60,7 +60,13 @@ extension PhotoDetailViewCell {
             isUserInteractionEnabled = false
         case 1:
             label.text = "Дата создания"
-            subLabel.text = viewModel.createdAt
+            let inputFormatter = DateFormatter()
+            inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            let formatDate = inputFormatter.date(from: viewModel.createdAt)
+            inputFormatter.dateFormat = "d MMM yyyy"
+            guard let formatDate = formatDate else { return }
+            let resultString = inputFormatter.string(from: formatDate)
+            subLabel.text = resultString
             isUserInteractionEnabled = false
         case 2:
             label.text = "Местоположение"
