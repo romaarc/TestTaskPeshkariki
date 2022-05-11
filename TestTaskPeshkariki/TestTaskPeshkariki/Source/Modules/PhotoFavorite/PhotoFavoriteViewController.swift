@@ -97,6 +97,7 @@ extension PhotoFavoriteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let generator = UISelectionFeedbackGenerator()
         let cdModel = viewModels[indexPath.row]
+        generator.prepare()
         generator.selectionChanged()
         output.onCellTap(with: PhotoViewModel(id: cdModel.id ?? "",
                                               user: User(name: cdModel.autorName ?? ""),

@@ -71,6 +71,7 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let generator = UISelectionFeedbackGenerator()
         let viewModel = viewModels[indexPath.row]
+        generator.prepare()
         generator.selectionChanged()
         output.onCellTap(with: viewModel)
     }
