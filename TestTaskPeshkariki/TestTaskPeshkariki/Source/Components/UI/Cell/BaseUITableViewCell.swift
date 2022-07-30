@@ -5,11 +5,9 @@
 //  Created by Roman Gorshkov on 29.04.2022.
 //
 
-import Foundation
 import UIKit
 
 class BaseUITableViewCell: UITableViewCell {
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()

@@ -4,10 +4,10 @@
 //
 //  Created by Roman Gorshkov on 30.04.2022.
 //
+
 import UIKit
 
 final class PhotoDetailViewCell: BaseUITableViewCell {
-    
     private let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

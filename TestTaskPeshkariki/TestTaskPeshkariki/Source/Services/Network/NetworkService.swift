@@ -14,7 +14,6 @@ enum NetworkErrors: Error {
 }
 
 final class NetworkService {
-    
     private let customDecoder: CustomDecoder
     
     init(customDecoder: CustomDecoder) {

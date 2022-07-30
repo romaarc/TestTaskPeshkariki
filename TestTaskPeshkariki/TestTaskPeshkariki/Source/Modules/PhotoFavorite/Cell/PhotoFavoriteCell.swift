@@ -8,7 +8,6 @@
 import UIKit
 
 final class PhotoFavoriteCell: BaseUITableViewCell {
-
     private let pictImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false

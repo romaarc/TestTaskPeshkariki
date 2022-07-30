@@ -8,7 +8,6 @@
 import UIKit
 
 class BaseUITableViewHeaderFooterView: UITableViewHeaderFooterView {
-    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         setupView()

@@ -8,7 +8,6 @@
 import UIKit
 
 final class PhotoHeaderSectionView: BaseUITableViewHeaderFooterView {
-    
     private let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

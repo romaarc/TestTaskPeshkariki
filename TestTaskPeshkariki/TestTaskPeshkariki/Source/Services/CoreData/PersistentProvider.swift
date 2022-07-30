@@ -6,7 +6,6 @@
 //
 
 import CoreData
-import Foundation
 
 final class PersistentProvider {
     private var persistentContainer: NSPersistentContainer!

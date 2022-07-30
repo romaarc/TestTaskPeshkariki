@@ -7,8 +7,7 @@
 
 import UIKit
 
-class UnsplashFlowLayout: UICollectionViewLayout {
-    
+final class UnsplashFlowLayout: UICollectionViewLayout {
     override var collectionViewContentSize: CGSize {
         return contentBounds.size
     }

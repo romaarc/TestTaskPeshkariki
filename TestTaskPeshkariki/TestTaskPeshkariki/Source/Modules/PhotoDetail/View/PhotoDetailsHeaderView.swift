@@ -8,7 +8,6 @@
 import UIKit
 
 final class PhotoDetailsHeaderView: BaseView {
-
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView(frame: .zero)
         imageView.translatesAutoresizingMaskIntoConstraints = false

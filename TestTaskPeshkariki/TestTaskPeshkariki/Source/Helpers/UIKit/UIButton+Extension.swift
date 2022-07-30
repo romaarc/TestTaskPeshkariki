@@ -8,7 +8,6 @@
 import UIKit.UIButton
 
 final class RoundedButton: UIButton {
-    
     convenience init(radius: CGFloat, backgroundColor: UIColor, textColor: UIColor) {
         self.init()
         layer.cornerRadius = radius

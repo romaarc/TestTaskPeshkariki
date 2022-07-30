@@ -5,7 +5,6 @@
 //  Created by Roman Gorshkov on 30.04.2022.
 //
 
-import Foundation
 import CoreData
 
 extension PersistentProvider: PersistentProviderProtocol {

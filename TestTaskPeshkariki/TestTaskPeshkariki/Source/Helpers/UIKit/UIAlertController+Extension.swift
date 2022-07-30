@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIAlertController {
-    
     static func display(msg: String) -> UIAlertController {
         let alertContoller = UIAlertController(
             title: "Произошло сохранение",

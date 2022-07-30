@@ -8,7 +8,6 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    
     var collectionView: UICollectionView
     
     lazy var activityIndicator: UIActivityIndicatorView = {
